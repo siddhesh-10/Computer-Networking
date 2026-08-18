@@ -104,6 +104,86 @@ Size of UDP header + UDP data.
 ### Checksum
 Used to detect corruption of the datagram.
 
+
+UDP data means the data given to UDP by the application, not the entire IP packet.
+
+Think of encapsulation:
+
+Application data
+       ↓
+   UDP header
+       +
+   UDP data
+       ↓
+     UDP
+       ↓
+   IP header
+       +
+   UDP segment
+       ↓
+     IP packet
+
+For example, suppose a DNS application wants to send:
+
+"google.com"
+
+UDP creates:
+
+┌─────────────────────────────┐
+│ UDP Header                  │
+│ Source Port                │
+│ Destination Port           │
+│ Length                     │
+│ Checksum                   │
+├─────────────────────────────┤
+│ UDP Data                    │
+│ "google.com"               │
+└─────────────────────────────┘
+
+This whole thing is called a UDP datagram (or UDP segment in some terminology).
+
+Then IP wraps it:
+
+┌─────────────────────────────┐
+│ IP Header                   │
+│ Source IP                   │
+│ Destination IP              │
+│ TTL / Hop Limit             │
+│ Protocol = UDP              │
+├─────────────────────────────┤
+│ UDP Header                  │
+│ UDP Data                    │
+└─────────────────────────────┘
+
+So:
+
+IP data/payload
+        =
+    UDP datagram
+        =
+UDP header + UDP data
+
+That's the important distinction.
+
+Another way to visualize it
+IP packet
+┌───────────────────────────────┐
+│ IP Header                     │
+├───────────────────────────────┤
+│                               │
+│    UDP datagram               │
+│    ┌───────────────────────┐  │
+│    │ UDP Header            │  │
+│    ├───────────────────────┤  │
+│    │ Application Data      │  │
+│    └───────────────────────┘  │
+│                               │
+└───────────────────────────────┘
+
+So when you say "UDP data", think:
+
+The application data carried inside UDP.
+
 ---
 
 ## 5. Ports
@@ -160,6 +240,49 @@ Receiver → 1 → 3
 UDP itself does not retransmit datagram 2.
 
 If reliability is required, the application or a protocol above UDP must provide it.
+
+
+Congestion control vs flow control
+
+These are easy to confuse.
+
+Congestion control
+
+Protects the network.
+
+Sender → Internet → Receiver
+            ↑
+      Don't overload
+       the network
+
+Question:
+
+"Can the network handle this much traffic?"
+
+Flow control
+
+Protects the receiver.
+
+Sender ─────────→ Receiver
+                    ↑
+              Receiver is slow
+
+Question:
+
+"Can the receiver handle this much data?"
+
+For example, your PC might be capable of receiving only a certain amount of data at a time.
+
+TCP handles both
+TCP
+├── Flow control
+│     → Don't overwhelm receiver
+│
+└── Congestion control
+      → Don't overwhelm network
+What about UDP?
+
+UDP itself has no built-in congestion control.
 
 ---
 
