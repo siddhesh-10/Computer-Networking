@@ -106,7 +106,7 @@ Used to detect corruption of the datagram.
 
 
 UDP data means the data given to UDP by the application, not the entire IP packet.
-
+```text
 Think of encapsulation:
 
 Application data
@@ -183,7 +183,7 @@ IP packet
 So when you say "UDP data", think:
 
 The application data carried inside UDP.
-
+```
 ---
 
 ## 5. Ports
@@ -242,10 +242,10 @@ UDP itself does not retransmit datagram 2.
 If reliability is required, the application or a protocol above UDP must provide it.
 
 
-Congestion control vs flow control
+## Congestion control vs flow control
 
 These are easy to confuse.
-
+```text
 Congestion control
 
 Protects the network.
@@ -258,7 +258,9 @@ Sender → Internet → Receiver
 Question:
 
 "Can the network handle this much traffic?"
+```
 
+```text
 Flow control
 
 Protects the receiver.
@@ -272,6 +274,7 @@ Question:
 "Can the receiver handle this much data?"
 
 For example, your PC might be capable of receiving only a certain amount of data at a time.
+```
 
 TCP handles both
 TCP
