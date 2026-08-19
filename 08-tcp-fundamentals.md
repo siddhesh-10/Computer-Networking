@@ -57,7 +57,117 @@ Example:
         ↕
 142.250.72.14:443
 ```
+``` text
+The TCP connection is a logical connection between two endpoints, identified mainly by:
 
+Source IP + Source Port
+Destination IP + Destination Port
+
+For example:
+
+PC                         Server
+192.168.1.10:50000  →  142.250.x.x:443
+
+After the TCP 3-way handshake:
+
+PC                         Server
+ │                            │
+ │── SYN ────────────────────→│
+ │←── SYN-ACK ────────────────│
+ │── ACK ─────────────────────→│
+ │                            │
+ │====== TCP connection ======│
+
+Now application data can flow.
+
+But does it skip IP/Ethernet?
+
+No. Every packet still goes through the networking layers.
+
+For every piece of data:
+
+Application
+    ↓
+TCP
+    ↓
+IP
+    ↓
+Ethernet / Wi-Fi
+    ↓
+Router
+    ↓
+...
+    ↓
+Server
+
+TCP knows:
+
+"I am communicating with 142.250.x.x:443"
+
+But TCP doesn't decide how to physically reach that server.
+
+The IP layer still does:
+
+Destination IP
+      ↓
+Routing table
+      ↓
+Next hop
+
+And each local link still uses Layer 2:
+
+PC → Router A
+MAC: PC → Router A
+
+
+Router A → Router B
+MAC: Router A → Router B
+
+
+Router B → Server
+MAC: Router B → Server
+What does the TCP connection actually establish then?
+
+It establishes state at both endpoints.
+
+For example, TCP remembers things such as:
+
+Connection established
+Sequence numbers
+Acknowledgments
+Window size
+Retransmission state
+Congestion-control state
+
+So after the handshake, when you send:
+
+"Hello"
+
+TCP doesn't need another handshake. It creates TCP segments and sends them through the normal IP routing system.
+
+One subtle point
+
+The route can even change during an established TCP connection.
+
+For example:
+
+Before:
+PC → Router A → Router B → Server
+
+
+Later:
+PC → Router A → Router C → Router D → Server
+
+The TCP connection can continue because the endpoints are still communicating with the same IP/port pair.
+
+So remember:
+
+TCP connection = logical relationship between two applications.
+
+IP routing = determines how each packet gets toward the destination.
+
+Ethernet/Wi-Fi = delivers the packet to the next hop on each local link.
+``` 
 ------------------------------------------------------------------------
 
 ## 3. Three-Way Handshake
