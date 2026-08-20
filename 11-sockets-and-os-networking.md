@@ -400,7 +400,7 @@ The exact mechanism depends on the operating system.
 ------------------------------------------------------------------------
 
 ## 12. Blocking vs Non-Blocking
-
+``` text
   -----------------------------------------------------------------------
                           Blocking                Non-blocking
   ----------------------- ----------------------- -----------------------
@@ -414,7 +414,7 @@ The exact mechanism depends on the operating system.
   Typical use             Simple servers/apps     High-concurrency
                                                   servers
   -----------------------------------------------------------------------
-
+```
 Mental model:
 
 ``` text

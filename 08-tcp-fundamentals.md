@@ -375,7 +375,7 @@ Segment 2 → LOST
 Segment 3 → received
 ```
 
-TCP can detect the missing data and retransmit it.
+TCP can detect the missing data and retransmit it , where until that the segment 3 waits in buffer.
 
 ``` text
 Sender → Segment 2 → X
@@ -474,7 +474,7 @@ ACK
 ------------------------------------------------------------------------
 
 ## 14. TCP vs UDP
-
+``` text
   Feature             TCP           UDP
   ------------------- ------------- -----------
   Connection          Yes           No
@@ -485,7 +485,7 @@ ACK
   Acknowledgements    Yes           No
   Retransmission      Yes           No
   Data model          Byte stream   Datagrams
-
+```
 Key difference:
 
 ``` text

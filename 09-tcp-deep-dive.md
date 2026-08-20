@@ -406,12 +406,14 @@ The exact behavior depends on the TCP congestion-control algorithm.
 
 This distinction is extremely important.
 
+``` text
                   Flow Control              Congestion Control
   --------------- ------------------------- ----------------------
   Protects        Receiver                  Network
   Main signal     `rwnd`                    `cwnd`
   Problem         Receiver buffer filling   Network overload
   Controlled by   Receiver                  Sender/path feedback
+```
 
 Simplified:
 
