@@ -216,12 +216,14 @@ Private server:443
 
 ## 8. SNAT vs DNAT
 
+``` text
                      SNAT               DNAT
   ------------------ ------------------ ------------------
   Changes            Source             Destination
   Common direction   Outbound           Inbound
   Example            Private → Public   Public → Private
   Common use         Internet access    Port forwarding
+```
 
 ``` text
 Outbound:
@@ -343,6 +345,7 @@ connection state.
 ------------------------------------------------------------------------
 
 ## 12. Stateful vs Stateless
+``` text
 
                                    Stateful                        Stateless
   -------------------------------- ------------------------------- -------------------------
@@ -351,6 +354,7 @@ connection state.
   Recognizes established flows     Yes                             No
   Return traffic rules             Often simpler                   May need explicit rules
   Typical use                      Firewalls                       ACLs / packet filters
+```
 
 Mental model:
 
