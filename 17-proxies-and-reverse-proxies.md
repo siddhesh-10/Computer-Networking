@@ -182,7 +182,7 @@ Security
 ------------------------------------------------------------------------
 
 ## 5. Forward vs Reverse Proxy
-
+``` text
   -----------------------------------------------------------------------
                           Forward Proxy           Reverse Proxy
   ----------------------- ----------------------- -----------------------
@@ -198,6 +198,7 @@ Security
 
   Example                 Corporate proxy         Web/API gateway
   -----------------------------------------------------------------------
+```
 
 ``` text
 Forward:
@@ -293,7 +294,7 @@ This is called **content-based routing**.
 ------------------------------------------------------------------------
 
 ## 8. L4 vs L7
-
+``` text
                          L4 Proxy    L7 Proxy
   ---------------------- ----------- ----------------
   Layer                  Transport   Application
@@ -302,6 +303,7 @@ This is called **content-based routing**.
   Path-based routing     No          Yes
   Header-based routing   No          Yes
   Typical protocols      TCP/UDP     HTTP/gRPC/etc.
+```
 
 Mental model:
 
