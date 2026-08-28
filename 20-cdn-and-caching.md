@@ -307,6 +307,13 @@ no-cache
 no-store
 must-revalidate
 s-maxage
+
+Directive	Simple meaning
+private	Only private/browser caches may store it
+no-store	Don't store it
+no-cache	Can store, but must validate before reuse
+must-revalidate	Once stale, must validate before reuse
+s-maxage	Freshness lifetime specifically for shared caches/CDNs
 ```
 
 Important distinction:
