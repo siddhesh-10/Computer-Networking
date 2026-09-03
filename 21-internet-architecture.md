@@ -270,6 +270,7 @@ Public peering
 
 ## 9. Transit vs Peering
 
+``` text
   -----------------------------------------------------------------------
                           Transit                 Peering
   ----------------------- ----------------------- -----------------------
@@ -284,6 +285,7 @@ Public peering
   Scope                   Broad Internet          Usually specific
                           reachability            routes/traffic
   -----------------------------------------------------------------------
+```
 
 Simplified:
 
