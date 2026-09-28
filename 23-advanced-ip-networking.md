@@ -28,7 +28,7 @@ Physical network
 ```
 
 ### IPv4 vs IPv6
-
+``` text
   Feature         IPv4              IPv6
   --------------- ----------------- ------------------
   Address         32-bit            128-bit
@@ -39,6 +39,7 @@ Physical network
   Base header     20+ bytes         40 bytes
 
 ------------------------------------------------------------------------
+```
 
 ## 2. IPv6 Addressing
 
@@ -55,7 +56,7 @@ Compressed:
 ```
 
 ### Common address types
-
+``` text
   Type        Meaning
   ----------- ---------------------------------------------------
   Unicast     One interface
@@ -63,7 +64,7 @@ Compressed:
   Anycast     One of multiple interfaces using the same address
   `::1`       Loopback
   `::`        Unspecified address
-
+```
 ### Prefix notation
 
 ``` text
@@ -136,7 +137,7 @@ TCP options can reduce usable payload.
 ------------------------------------------------------------------------
 
 ## 5. MTU vs MSS
-
+``` text
   Concept                    MTU                     MSS
   -------------------------- ----------------------- ------------------------
   Layer                      Network/link boundary   Transport
@@ -144,6 +145,7 @@ TCP options can reduce usable payload.
   Includes IP/TCP headers?   Yes                     No
   Typical example            1500 bytes              1460 bytes
   Purpose                    Packet-size limit       TCP payload-size limit
+```
 
 ``` text
 IP packet
@@ -308,14 +310,14 @@ Keeping a flow on one path reduces packet reordering.
 ------------------------------------------------------------------------
 
 ## 11. ECMP vs Load Balancing
-
+``` text
   ECMP                    Load Balancer
   ----------------------- ---------------------------------------
   Routing mechanism       Traffic distribution system
   Usually Layer 3         Often Layer 4 or Layer 7
   Chooses next hop/path   Chooses backend/server
   Uses routing topology   Can use health and application policy
-
+```
 ------------------------------------------------------------------------
 
 ## 12. Jumbo Frames
