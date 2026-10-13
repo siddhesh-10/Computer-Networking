@@ -27,7 +27,7 @@ Example:
 A ↔ B
 B ↔ C
 
-A ↛ C automatically
+Not A ↛ C automatically
 ```
 
 For many-to-many VPC connectivity, Transit Gateway is usually a better fit.
